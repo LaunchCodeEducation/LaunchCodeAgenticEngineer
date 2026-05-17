@@ -1,0 +1,16 @@
+streamlit
+anthropic
+python-dotenv
+pandas
+numpy
+slack_sdk
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+requests
+fastapi
+flask
+uvicorn
+pydantic
+httpx
