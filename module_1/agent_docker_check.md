@@ -1,0 +1,1 @@
+Review this repo’s Docker setup. Run the documented Docker build command, report whether the image builds successfully, summarize any warnings or errors, and recommend whether the repo is ready for the next step. Do not push, publish, or deploy anything.
