@@ -10,22 +10,22 @@ This is a Docker-based development environment for LaunchCode's **Agentic Progra
 
 Build the image:
 ```bash
-docker build -t agentic_engineer_1_1 .
+docker build -t agentic_engineer_1 .
 ```
 
 Force a clean rebuild:
 ```bash
-docker build --no-cache -t agentic_engineer_1_1 .
+docker build --no-cache -t agentic_engineer_1 .
 ```
 
 Run with a local workspace mounted (recommended):
 ```bash
-docker run -it --rm -p 8501:8501 -p 8502:8502 -v "$PWD":/workspace agentic_engineer_1_1
+docker run -it --rm -p 8501:8501 -p 8502:8502 -v "$PWD":/workspace agentic_engineer_1
 ```
 
 Pull and run the pre-built image from DockerHub:
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace heatonresearch/agentic_engineer_1_1:latest
+docker run -it --rm -p 8501:8501 -v "$PWD":/workspace heatonresearch/agentic_engineer_1:latest
 ```
 
 ## Running Streamlit Apps
