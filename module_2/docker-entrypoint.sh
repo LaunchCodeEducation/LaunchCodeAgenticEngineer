@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-# Generate settings.json (skills; mcpServers added via CLI below)
-envsubst < /root/.claude/settings.template.json > /root/.claude/settings.json
-
 # Register MCP servers via Claude Code CLI
 claude mcp add slack \
   node /usr/local/lib/node_modules/@modelcontextprotocol/server-slack/dist/index.js \

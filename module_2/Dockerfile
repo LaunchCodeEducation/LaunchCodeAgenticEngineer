@@ -37,7 +37,6 @@ RUN curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 
 # Set up Claude Code configuration directory and copy settings template
 RUN mkdir -p /root/.claude/skills
-COPY settings.template.json /root/.claude/settings.template.json
 COPY skills/ /root/.claude/skills/
 
 # Copy entrypoint script
