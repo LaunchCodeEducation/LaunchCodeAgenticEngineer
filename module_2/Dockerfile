@@ -39,6 +39,10 @@ RUN curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 RUN mkdir -p /root/.claude/skills
 COPY skills/ /root/.claude/skills/
 
+# Copy agents into Claude Code agents directory
+RUN mkdir -p /root/.claude/agents
+COPY agents/ /root/.claude/agents/
+
 # Copy entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh

@@ -5,6 +5,7 @@ Docker development environment for LaunchCode's **Agentic Programming** course, 
 - **Slack MCP server** — lets Claude Code prompts read and post to Slack
 - **Gmail MCP server** — lets Claude Code prompts read and send email
 - **Pre-configured skills** — custom slash commands available inside Claude Code
+- **Pre-configured agents** — autonomous sub-agents Claude Code can invoke for specialized tasks
 
 ## Quick Start
 
@@ -248,6 +249,93 @@ docker build -t agentic_engineer_2 .
 | Supports Markdown formatting | Yes | No |
 
 When in doubt, prefer SKILL.md files. They scale better and are easier to maintain as your prompt evolves.
+
+---
+
+---
+
+## Agents
+
+Agents are autonomous sub-agents that Claude Code can spin up to handle specialized tasks. Unlike skills (which are slash commands you invoke), agents are specialists that Claude Code invokes automatically when the task matches, or that you can request explicitly in a prompt.
+
+Agents are defined as Markdown files with YAML frontmatter and stored in `.claude/agents/` (inside the container: `/root/.claude/agents/`). Source files live in `agents/` in this repo and are copied in at image build time.
+
+### Pre-installed Agents
+
+| Agent | Trigger description |
+|---|---|
+| `code-reviewer` | Reviews recent git changes for quality, security, and maintainability without modifying files |
+
+### Running an Agent
+
+**Explicitly — ask Claude Code to use it:**
+
+```
+Review my recent changes using the code-reviewer agent.
+```
+
+**Automatically** — Claude Code will invoke the agent on its own when the task matches the agent's description. For example, after you ask Claude to write a new feature, it may proactively run the code-reviewer agent.
+
+### How the code-reviewer Agent Works
+
+When invoked, `code-reviewer`:
+
+1. Runs `git diff` to find recent changes.
+2. Reads each modified file.
+3. Classifies every issue as **Critical**, **Warning**, or **Suggestion**.
+4. Provides a concrete fix example for every Critical and Warning item.
+
+It checks for:
+- Code clarity and naming conventions
+- Duplicated logic
+- Error handling and input validation
+- Exposed secrets or API keys
+- Test coverage for new behavior
+- Performance implications
+
+The agent never edits or creates files — it only reports.
+
+### Adding a New Agent
+
+1. Create a Markdown file in `agents/` with a YAML frontmatter block:
+
+```markdown
+---
+name: my-agent
+description: >
+  One or two sentences describing when Claude Code should invoke this agent.
+tools: Read, Grep, Glob, Bash
+model: inherit
+permissionMode: default
+---
+
+Your agent prompt goes here.
+```
+
+2. Rebuild the image:
+
+```bash
+docker build -t agentic_engineer_2 .
+```
+
+**Adding an agent at runtime (no rebuild required):**
+
+```bash
+mkdir -p /root/.claude/agents
+nano /root/.claude/agents/my-agent.md
+```
+
+Note: agents added this way are lost when the container exits (since it runs with `--rm`). Add them to `agents/` in this repo and rebuild to persist them.
+
+### Agent File Format
+
+| Field | Description |
+|---|---|
+| `name` | Identifier used to reference the agent |
+| `description` | Tells Claude Code when to invoke the agent (be specific) |
+| `tools` | Comma-separated list of tools the agent may use |
+| `model` | Model to use (`inherit` uses the same model as the parent session) |
+| `permissionMode` | `default` respects normal permission prompts; `allowAll` skips them |
 
 ---
 

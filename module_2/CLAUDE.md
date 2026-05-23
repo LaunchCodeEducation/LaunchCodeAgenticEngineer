@@ -59,6 +59,25 @@ Pre-configured skills (invoked with `/skill-name` in Claude Code):
 
 Skills are defined in `settings.json` which is copied to `/root/.claude/settings.json` during image build.
 
+## Agents
+
+Pre-configured sub-agents available inside Claude Code sessions. Agents are autonomous specialists that Claude Code can invoke automatically or that you can request explicitly.
+
+| Agent | Description |
+|---|---|
+| `code-reviewer` | Reviews recent git changes for quality, security, and maintainability |
+
+Agents are defined as Markdown files with YAML frontmatter in `/root/.claude/agents/` inside the container. Source files live in the `agents/` directory of this repo and are copied in at build time.
+
+**Running an agent:**
+
+Ask Claude Code to use the agent explicitly:
+```
+Review my recent changes using the code-reviewer agent.
+```
+
+Or Claude Code may invoke it automatically when the task matches the agent's description.
+
 ## Running Streamlit Apps
 
 From inside the container:
