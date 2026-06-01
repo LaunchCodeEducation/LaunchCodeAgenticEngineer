@@ -12,13 +12,13 @@ Docker development environment for LaunchCode's **Agentic Programming** course, 
 Build and run locally:
 
 ```bash
-cd module_2
-docker build -t agentic_engineer_2 .
+cd module_3
+docker build -t agentic_engineer_3 .
 docker run -it --rm -p 8501:8501 -p 8502:8502 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
   -v "$PWD":/workspace \
-  agentic_engineer_2
+  agentic_engineer_3
 ```
 
 Or pull the pre-built image from DockerHub:
@@ -350,31 +350,31 @@ docker login
 Build the image and tag it with your DockerHub username and repository name. Replace `heatonresearch` with your DockerHub username if different.
 
 ```bash
-cd module_2
-docker build -t heatonresearch/agentic_engineer_2:latest .
+cd module_3
+docker build -t heatonresearch/agentic_engineer_3:latest .
 ```
 
 To tag a specific version number alongside `latest` (recommended so students can pin to a known-good version):
 
 ```bash
 docker build \
-  -t heatonresearch/agentic_engineer_2:latest \
-  -t heatonresearch/agentic_engineer_2:2.0 .
+  -t heatonresearch/agentic_engineer_3:latest \
+  -t heatonresearch/agentic_engineer_3:3.0 .
 ```
 
 Force a full rebuild ignoring all cached layers:
 
 ```bash
 docker build --no-cache \
-  -t heatonresearch/agentic_engineer_2:latest \
-  -t heatonresearch/agentic_engineer_2:2.0 .
+  -t heatonresearch/agentic_engineer_3:latest \
+  -t heatonresearch/agentic_engineer_3:3.0 .
 ```
 
 ### Step 2 — Push to DockerHub
 
 ```bash
-docker push heatonresearch/agentic_engineer_2:latest
-docker push heatonresearch/agentic_engineer_2:2.0
+docker push heatonresearch/agentic_engineer_3:latest
+docker push heatonresearch/agentic_engineer_3:3.0
 ```
 
 Both tags must be pushed separately. The `latest` tag is what students get by default when they don't specify a version.
