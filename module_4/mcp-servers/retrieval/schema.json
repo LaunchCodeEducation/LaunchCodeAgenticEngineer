@@ -1,0 +1,10 @@
+{
+  "operations": [
+    "retrieve"
+  ],
+  "classification_levels": [
+    "public",
+    "internal",
+    "confidential"
+  ]
+}

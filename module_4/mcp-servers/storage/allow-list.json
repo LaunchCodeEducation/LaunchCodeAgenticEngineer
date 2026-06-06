@@ -1,0 +1,30 @@
+{
+  "write_entry": [
+    "implementer",
+    "orchestrator"
+  ],
+  "read_entry": [
+    "implementer",
+    "reviewer",
+    "tester",
+    "project-manager",
+    "orchestrator"
+  ],
+  "list_entries": [
+    "implementer",
+    "reviewer",
+    "tester",
+    "project-manager",
+    "orchestrator"
+  ],
+  "update_entry": [
+    "implementer",
+    "orchestrator"
+  ],
+  "delete_entry": [
+    "orchestrator"
+  ],
+  "audit_read": [
+    "orchestrator"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "task_id": "T-1001",
+  "summary": "Add retry logic",
+  "owner": "implementer"
+}
