@@ -7,6 +7,16 @@ Docker development environment for LaunchCode's **Agentic Programming** course, 
 - **Pre-configured skills** — custom slash commands available inside Claude Code
 - **Pre-configured agents** — autonomous sub-agents Claude Code can invoke for specialized tasks
 
+## Module 4.2 — CI/CD
+
+The CI/CD content for Module 4.2 lives in its own dedicated repository:
+
+**[https://github.com/jeffheaton/LaunchCodeAgenticEngineerMod4](https://github.com/jeffheaton/LaunchCodeAgenticEngineerMod4)**
+
+Use that repo for all CI/CD exercises, GitHub Actions workflows, and related assignments. The instructions and example code there are self-contained and independent of this Docker environment.
+
+---
+
 ## Quick Start
 
 Build and run locally:
