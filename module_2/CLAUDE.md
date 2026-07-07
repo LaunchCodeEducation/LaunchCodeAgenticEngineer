@@ -29,7 +29,7 @@ docker run -it --rm -p 8501:8501 -p 8502:8502 \
 
 Pull and run the pre-built image from DockerHub:
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace heatonresearch/agentic_engineer_2:latest
+docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_2:latest
 ```
 
 ## MCP Servers
