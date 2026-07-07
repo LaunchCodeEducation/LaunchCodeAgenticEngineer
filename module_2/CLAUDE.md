@@ -6,32 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Docker-based development environment for LaunchCode's **Agentic Programming** course, Module 2. It extends the Module 1 environment with MCP (Model Context Protocol) server support for Slack and Gmail, plus pre-configured Claude Code skills.
 
-## Docker Commands
-
-Build the image:
-```bash
-docker build -t agentic_engineer_2 .
-```
-
-Force a clean rebuild:
-```bash
-docker build --no-cache -t agentic_engineer_2 .
-```
-
-Run with a local workspace mounted (recommended):
-```bash
-docker run -it --rm -p 8501:8501 -p 8502:8502 \
-  -e SLACK_BOT_TOKEN=your-token \
-  -e SLACK_TEAM_ID=your-team-id \
-  -v "$PWD":/workspace \
-  agentic_engineer_2
-```
-
-Pull and run the pre-built image from DockerHub:
-```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_2:latest
-```
-
 ## MCP Servers
 
 Two MCP servers are pre-installed and configured in `/root/.claude/settings.json`:
