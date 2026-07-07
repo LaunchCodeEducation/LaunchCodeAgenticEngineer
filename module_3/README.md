@@ -36,7 +36,7 @@ docker run -it --rm \
   -e SLACK_TEAM_ID=T0123456 \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
-  heatonresearch/agentic_engineer_3:latest
+  us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest
 ```
 
 Full setup with Slack and Gmail (reads credentials from your shell environment):
@@ -52,7 +52,7 @@ docker run -it --rm \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
   -v "$HOME/.gmail-mcp":/root/.gmail-mcp \
-  heatonresearch/agentic_engineer_3:latest
+  us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest
 ```
 
 Place `credentials.json` (from Google Cloud Console) in `$PWD` before running. The Gmail MCP will trigger OAuth on first use and persist the token in `~/.gmail-mcp/`.
@@ -401,30 +401,30 @@ Build the image and tag it with your DockerHub username and repository name. Rep
 
 ```bash
 cd module_3
-docker build -t heatonresearch/agentic_engineer_3:latest .
+docker build -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest .
 ```
 
 To tag a specific version number alongside `latest` (recommended so students can pin to a known-good version):
 
 ```bash
 docker build \
-  -t heatonresearch/agentic_engineer_3:latest \
-  -t heatonresearch/agentic_engineer_3:3.0 .
+  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest \
+  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:3.0 .
 ```
 
 Force a full rebuild ignoring all cached layers:
 
 ```bash
 docker build --no-cache \
-  -t heatonresearch/agentic_engineer_3:latest \
-  -t heatonresearch/agentic_engineer_3:3.0 .
+  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest \
+  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:3.0 .
 ```
 
 ### Step 2 — Push to DockerHub
 
 ```bash
-docker push heatonresearch/agentic_engineer_3:latest
-docker push heatonresearch/agentic_engineer_3:3.0
+docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest
+docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:3.0
 ```
 
 Both tags must be pushed separately. The `latest` tag is what students get by default when they don't specify a version.
@@ -446,5 +446,5 @@ docker run -it --rm \
   -e SLACK_TEAM_ID=T0123456 \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
-  heatonresearch/agentic_engineer_3:latest
+  us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest
 ```
