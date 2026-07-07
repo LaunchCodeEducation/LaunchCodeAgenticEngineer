@@ -16,7 +16,7 @@ docker run -it --rm -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
 Or skip the build entirely and pull the pre-built image from DockerHub:
 
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace heatonresearch/agentic_engineer_1:latest
+docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```
 
 ## Build
@@ -103,23 +103,23 @@ On first run, Google will prompt you to authorize access. The resulting `token.j
 Build and tag the image for DockerHub, then push:
 
 ```bash
-docker build -t heatonresearch/agentic_engineer_1:latest .
+docker build -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest .
 docker login
-docker push heatonresearch/agentic_engineer_1:latest
+docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```
 
 To tag a specific version alongside `latest`:
 
 ```bash
-docker build -t heatonresearch/agentic_engineer_1:latest -t heatonresearch/agentic_engineer_1:1.0 .
-docker push heatonresearch/agentic_engineer_1:latest
-docker push heatonresearch/agentic_engineer_1:1.0
+docker build -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:1.0 .
+docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
+docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:1.0
 ```
 
 Students can then pull and run the image directly without building it locally:
 
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace heatonresearch/agentic_engineer_1:latest
+docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```
 
 ## Running Streamlit apps
