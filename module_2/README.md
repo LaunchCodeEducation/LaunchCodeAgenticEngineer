@@ -149,7 +149,6 @@ Skills are custom slash commands invoked by typing `/skill-name` inside a Claude
 | `/check-gmail`        | Retrieve and summarize recent unread Gmail messages         |
 | `/send-email`         | Draft and send an email via the Gmail MCP server            |
 | `/summarize-session`  | Generate a bullet-point summary of the current work session |
-| `/rebuild-and-deploy` | Rebuild the Docker image and push it to DockerHub           |
 
 ---
 
