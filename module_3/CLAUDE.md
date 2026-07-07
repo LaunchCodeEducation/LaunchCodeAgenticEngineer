@@ -6,33 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Docker-based development environment for LaunchCode's **Agentic Programming** course, Module 3. 
 
-## Docker Commands
-
-Build the image:
-```bash
-docker build -t agentic_engineer_3 .
-```
-
-Force a clean rebuild:
-```bash
-docker build --no-cache -t agentic_engineer_3 .
-```
-
-Run with a local workspace mounted (recommended):
-```bash
-docker run -it --rm -p 8501:8501 -p 8502:8502 \
-  -e SLACK_BOT_TOKEN=your-token \
-  -e SLACK_TEAM_ID=your-team-id \
-  -v "$PWD":/workspace \
-  -v "$PWD/.memory":/memory \
-  agentic_engineer_3
-```
-
-Pull and run the pre-built image from DockerHub:
-```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest
-```
-
 ## MCP Servers
 
 Two MCP servers are pre-installed and configured in `/root/.claude/settings.json`:

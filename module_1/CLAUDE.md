@@ -6,28 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Docker-based development environment for LaunchCode's **Agentic Programming** course. It provides a pre-configured Python 3.12 environment with AI/ML libraries, Anthropic Claude integration, and the Claude Code CLI.
 
-## Docker Commands
-
-Build the image:
-```bash
-docker build -t agentic_engineer_1 .
-```
-
-Force a clean rebuild:
-```bash
-docker build --no-cache -t agentic_engineer_1 .
-```
-
-Run with a local workspace mounted (recommended):
-```bash
-docker run -it --rm -p 8501:8501 -p 8502:8502 -v "$PWD":/workspace agentic_engineer_1
-```
-
-Pull and run the pre-built image from DockerHub:
-```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
-```
-
 ## Running Streamlit Apps
 
 From inside the container:
