@@ -1,7 +1,7 @@
 Rebuild the Docker image and push it to DockerHub.
 
 Before doing anything, ask the user for:
-- The DockerHub username/repository (default: `heatonresearch/agentic_engineer_2`)
+- The DockerHub username/repository (default: `us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_2`)
 - A version tag to apply alongside `latest` (e.g. `2.1`). If the user says "skip" or "none", only tag as `latest`.
 
 Show the user the exact commands that will be run and ask for confirmation before proceeding.
@@ -23,4 +23,4 @@ Steps:
    docker push <repo>:<version>   # if a version tag was provided
    ```
 5. If any push fails, report the error and remind the user to run `docker login` if they are not authenticated.
-6. On success, confirm the image is live and print the full image reference (e.g. `heatonresearch/agentic_engineer_2:2.1`).
+6. On success, confirm the image is live and print the full image reference (e.g. `us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_2:2.1`).

@@ -1,4 +1,4 @@
-# LaunchCodeDocker
+# LaunchCodeAgenticEngineer
 
 Docker development environment for LaunchCode's **Agentic Programming** course. Provides a consistent, pre-configured Python environment with AI/ML libraries, Anthropic Claude integration, and the Claude Code CLI.
 
@@ -7,8 +7,8 @@ Docker development environment for LaunchCode's **Agentic Programming** course. 
 Clone the repo and build locally:
 
 ```bash
-git clone https://github.com/heatonresearch/LaunchCodeDocker.git
-cd LaunchCodeDocker
+git clone https://github.com/LaunchCodeEducation/LaunchCodeAgenticEngineer.git
+cd LaunchCodeAgenticEngineer
 docker build -t agentic_engineer_1 .
 docker run -it --rm -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
 ```
@@ -16,7 +16,7 @@ docker run -it --rm -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
 Or skip the build entirely and pull the pre-built image from DockerHub:
 
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace heatonresearch/agentic_engineer_1:latest
+docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```
 
 ## Build
@@ -98,36 +98,12 @@ flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
 
 On first run, Google will prompt you to authorize access. The resulting `token.json` will be saved in your workspace and reused on subsequent runs.
 
-## Publishing to DockerHub
+## Images
 
-Build and tag the image for DockerHub, then push:
+Images are built and published automatically by a GitHub Action whenever the main repository (not forks) changes — you don't need to build or push manually.
 
-```bash
-docker build -t heatonresearch/agentic_engineer_1:latest .
-docker login
-docker push heatonresearch/agentic_engineer_1:latest
-```
-
-To tag a specific version alongside `latest`:
+Students can pull and run the published image directly without building it locally:
 
 ```bash
-docker build -t heatonresearch/agentic_engineer_1:latest -t heatonresearch/agentic_engineer_1:1.0 .
-docker push heatonresearch/agentic_engineer_1:latest
-docker push heatonresearch/agentic_engineer_1:1.0
+docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```
-
-Students can then pull and run the image directly without building it locally:
-
-```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace heatonresearch/agentic_engineer_1:latest
-```
-
-## Running Streamlit apps
-
-From inside the container:
-
-```bash
-streamlit run app.py
-```
-
-Then open [http://localhost:8501](http://localhost:8501) in your browser.
