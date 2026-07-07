@@ -1,4 +1,4 @@
-# LaunchCodeDocker
+# LaunchCodeAgenticEngineer
 
 Docker development environment for LaunchCode's **Agentic Programming** course. Provides a consistent, pre-configured Python environment with AI/ML libraries, Anthropic Claude integration, and the Claude Code CLI.
 
@@ -7,8 +7,8 @@ Docker development environment for LaunchCode's **Agentic Programming** course. 
 Clone the repo and build locally:
 
 ```bash
-git clone https://github.com/heatonresearch/LaunchCodeDocker.git
-cd LaunchCodeDocker
+git clone https://github.com/LaunchCodeEducation/LaunchCodeAgenticEngineer.git
+cd LaunchCodeAgenticEngineer
 docker build -t agentic_engineer_1 .
 docker run -it --rm -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
 ```
