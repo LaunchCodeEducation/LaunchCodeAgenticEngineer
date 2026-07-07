@@ -381,57 +381,9 @@ Then open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ---
 
-## Build & Deploy to DockerHub
+## Images
 
-This section covers the full workflow for building the image and publishing it to DockerHub so students can pull it without building locally.
-
-### Prerequisites
-
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
-- A DockerHub account (free at [hub.docker.com](https://hub.docker.com))
-- Logged in to DockerHub on your machine:
-
-```bash
-docker login
-```
-
-### Step 1 — Build and tag for DockerHub
-
-Build the image and tag it with your DockerHub username and repository name. Replace `heatonresearch` with your DockerHub username if different.
-
-```bash
-cd module_3
-docker build -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest .
-```
-
-To tag a specific version number alongside `latest` (recommended so students can pin to a known-good version):
-
-```bash
-docker build \
-  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest \
-  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:3.0 .
-```
-
-Force a full rebuild ignoring all cached layers:
-
-```bash
-docker build --no-cache \
-  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest \
-  -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:3.0 .
-```
-
-### Step 2 — Push to DockerHub
-
-```bash
-docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest
-docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:3.0
-```
-
-Both tags must be pushed separately. The `latest` tag is what students get by default when they don't specify a version.
-
-### Step 3 — Verify the image is public
-
-Visit `https://hub.docker.com/r/heatonresearch/agentic_engineer_3` and confirm the repository visibility is set to **Public** so students can pull without logging in.
+Images are built and published automatically by a GitHub Action whenever the main repository (not forks) changes — you don't need to build or push manually.
 
 ### Pulling the image (students)
 

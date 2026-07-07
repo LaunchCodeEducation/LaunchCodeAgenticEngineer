@@ -98,36 +98,12 @@ flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
 
 On first run, Google will prompt you to authorize access. The resulting `token.json` will be saved in your workspace and reused on subsequent runs.
 
-## Publishing to DockerHub
+## Images
 
-Build and tag the image for DockerHub, then push:
+Images are built and published automatically by a GitHub Action whenever the main repository (not forks) changes — you don't need to build or push manually.
 
-```bash
-docker build -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest .
-docker login
-docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
-```
-
-To tag a specific version alongside `latest`:
-
-```bash
-docker build -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest -t us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:1.0 .
-docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
-docker push us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:1.0
-```
-
-Students can then pull and run the image directly without building it locally:
+Students can pull and run the published image directly without building it locally:
 
 ```bash
 docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```
-
-## Running Streamlit apps
-
-From inside the container:
-
-```bash
-streamlit run app.py
-```
-
-Then open [http://localhost:8501](http://localhost:8501) in your browser.
