@@ -2,8 +2,9 @@
 """
 Real LLM orchestrator for Module 3 eval harness.
 
-Runs a multi-agent pipeline with actual Claude API calls and writes the
-transcript JSON + audit log that test_deterministic.py expects.
+Runs a multi-agent pipeline with actual LLM calls (Claude models served via
+OpenRouter's Anthropic-compatible endpoint) and writes the transcript JSON +
+audit log that test_deterministic.py expects.
 
 Usage (from module_3/):
     python3 eval/orchestrator.py [options]
@@ -46,7 +47,7 @@ import anthropic
 
 # ── model ────────────────────────────────────────────────────────────────────
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "anthropic/claude-sonnet-4.6"
 
 # ── tool grant map (mirrors docs/routing-and-tool-grant-map.json) ─────────────
 
@@ -508,7 +509,10 @@ def run_orchestrator(
     out_path: str,
     canary: str | None,
 ) -> None:
-    client = anthropic.Anthropic()
+    client = anthropic.Anthropic(
+        base_url="https://openrouter.ai/api",
+        auth_token=os.environ.get("OPENROUTER_API_KEY"),
+    )
 
     transcript_events: list[dict] = []
     audit_entries: list[dict] = []
