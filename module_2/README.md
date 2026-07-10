@@ -36,7 +36,7 @@ Full setup with Slack and Gmail (reads credentials from your shell environment):
 ```bash
 docker run -it --rm \
   -p 8501:8501 -p 8502:8502 \
-  -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
+  -e OPENROUTER_API_KEY=$OPENROUTER_API_KEY \
   -e SLACK_BOT_TOKEN=$SLACK_BOT_TOKEN \
   -e SLACK_TEAM_ID=$SLACK_TEAM_ID \
   -v "$PWD":/workspace \
