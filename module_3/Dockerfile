@@ -100,6 +100,11 @@ COPY skills/ /root/.claude/skills/
 RUN mkdir -p /root/.claude/agents
 COPY agents/ /root/.claude/agents/
 
+# Default settings + status line
+COPY settings.json /root/.claude/settings.json
+COPY statusline.sh /root/.claude/statusline.sh
+RUN chmod +x /root/.claude/statusline.sh
+
 # --- Workspace directory structure for Module 3.2 ---
 # /workspace itself is typically bind-mounted, so these dirs may be shadowed
 # at runtime. Creating them here ensures they exist in the image-only case

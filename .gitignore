@@ -6,7 +6,6 @@ credentials.json
 summary.txt
 test.txt
 .DS_Store
-module_2/settings.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
