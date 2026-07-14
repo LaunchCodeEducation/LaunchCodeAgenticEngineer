@@ -43,6 +43,11 @@ COPY skills/ /root/.claude/skills/
 RUN mkdir -p /root/.claude/agents
 COPY agents/ /root/.claude/agents/
 
+# Default settings + status line
+COPY settings.json /root/.claude/settings.json
+COPY statusline.sh /root/.claude/statusline.sh
+RUN chmod +x /root/.claude/statusline.sh
+
 # Copy entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
