@@ -20,6 +20,7 @@ docker run -it --rm \
   -p 8001:8001 -p 8002:8002 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
   agentic_engineer_3
@@ -34,6 +35,7 @@ docker run -it --rm \
   -p 8001:8001 -p 8002:8002 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
   us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest
@@ -49,6 +51,7 @@ docker run -it --rm \
   -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
   -e SLACK_BOT_TOKEN=$SLACK_BOT_TOKEN \
   -e SLACK_TEAM_ID=$SLACK_TEAM_ID \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
   -v "$HOME/.gmail-mcp":/root/.gmail-mcp \
@@ -56,6 +59,8 @@ docker run -it --rm \
 ```
 
 Place `credentials.json` (from Google Cloud Console) in `$PWD` before running. The Gmail MCP will trigger OAuth on first use and persist the token in `~/.gmail-mcp/`.
+
+> **Claude authentication:** The `-v claude-auth:/claude-auth` mount is a shared named volume that persists your Claude Code login across container runs — and across every course module. You go through Claude's first-run onboarding and log in once; every later container restores your credential and skips onboarding. Only your credential is stored on the volume — skills, agents, settings, the status line, and each image's MCP servers stay baked into the image.
 
 ## Build
 
@@ -81,6 +86,7 @@ docker run -it --rm \
   -p 8001:8001 -p 8002:8002 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
   agentic_engineer_3
@@ -92,6 +98,7 @@ docker run -it --rm `
   -p 8001:8001 -p 8002:8002 `
   -e SLACK_BOT_TOKEN=xoxb-your-token `
   -e SLACK_TEAM_ID=T0123456 `
+  -v claude-auth:/claude-auth `
   -v "${PWD}:/workspace" `
   -v "${PWD}/.memory":/memory `
   agentic_engineer_3
@@ -129,6 +136,7 @@ docker run -it --rm \
   -p 8501:8501 \
   -p 6274:6274 -p 3000:3000 \
   -p 8001:8001 -p 8002:8002 \
+  -v claude-auth:/claude-auth \
   agentic_engineer_3
 ```
 
@@ -177,6 +185,7 @@ docker run -it --rm \
   -p 8501:8501 \
   -p 6274:6274 -p 3000:3000 \
   -p 8001:8001 -p 8002:8002 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
   -v "$HOME/.gmail-mcp":/root/.gmail-mcp \
@@ -395,6 +404,7 @@ docker run -it --rm \
   -p 8001:8001 -p 8002:8002 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$PWD/.memory":/memory \
   us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_3:latest

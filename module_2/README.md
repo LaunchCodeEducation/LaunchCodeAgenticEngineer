@@ -17,6 +17,7 @@ docker build -t agentic_engineer_2 .
 docker run -it --rm -p 8501:8501 -p 8502:8502 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   agentic_engineer_2
 ```
@@ -27,6 +28,7 @@ Or pull the pre-built image from DockerHub:
 docker run -it --rm -p 8501:8501 -p 8502:8502 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_2:latest
 ```
@@ -39,12 +41,15 @@ docker run -it --rm \
   -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
   -e SLACK_BOT_TOKEN=$SLACK_BOT_TOKEN \
   -e SLACK_TEAM_ID=$SLACK_TEAM_ID \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$HOME/.gmail-mcp":/root/.gmail-mcp \
   us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_2:latest
 ```
 
 Place `credentials.json` (from Google Cloud Console) in `$PWD` before running. The Gmail MCP will trigger OAuth on first use and persist the token in `~/.gmail-mcp/`.
+
+> **Claude authentication:** The `-v claude-auth:/claude-auth` mount is a shared named volume that persists your Claude Code login across container runs — and across every course module. You go through Claude's first-run onboarding and log in once; every later container restores your credential and skips onboarding. Only your credential is stored on the volume — skills, agents, settings, the status line, and each image's MCP servers stay baked into the image.
 
 ## Build
 
@@ -67,6 +72,7 @@ docker build --no-cache -t agentic_engineer_2 .
 docker run -it --rm -p 8501:8501 -p 8502:8502 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   agentic_engineer_2
 
@@ -74,6 +80,7 @@ docker run -it --rm -p 8501:8501 -p 8502:8502 \
 docker run -it --rm -p 8501:8501 -p 8502:8502 `
   -e SLACK_BOT_TOKEN=xoxb-your-token `
   -e SLACK_TEAM_ID=T0123456 `
+  -v claude-auth:/claude-auth `
   -v "${PWD}:/workspace" `
   agentic_engineer_2
 ```
@@ -83,7 +90,7 @@ Files created or edited inside `/workspace` are saved to your local folder and p
 ### Without a local workspace
 
 ```bash
-docker run -it --rm -p 8501:8501 agentic_engineer_2
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 agentic_engineer_2
 ```
 
 Any files created inside the container will be lost when it exits.
@@ -128,6 +135,7 @@ MCP (Model Context Protocol) servers extend Claude Code so that prompts can take
 
 ```bash
 docker run -it --rm -p 8501:8501 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   -v "$HOME/.gmail-mcp":/root/.gmail-mcp \
   agentic_engineer_2
@@ -342,6 +350,7 @@ Once published, students can run the image directly without cloning the repo or 
 docker run -it --rm -p 8501:8501 -p 8502:8502 \
   -e SLACK_BOT_TOKEN=xoxb-your-token \
   -e SLACK_TEAM_ID=T0123456 \
+  -v claude-auth:/claude-auth \
   -v "$PWD":/workspace \
   us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_2:latest
 ```

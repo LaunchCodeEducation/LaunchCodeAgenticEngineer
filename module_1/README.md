@@ -10,14 +10,16 @@ Clone the repo and build locally:
 git clone https://github.com/LaunchCodeEducation/LaunchCodeAgenticEngineer.git
 cd LaunchCodeAgenticEngineer
 docker build -t agentic_engineer_1 .
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
 ```
 
 Or skip the build entirely and pull the pre-built image from DockerHub:
 
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```
+
+> **Claude authentication:** The `-v claude-auth:/claude-auth` mount is a shared named volume that persists your Claude Code login across container runs — and across every course module. You go through Claude's first-run onboarding and log in once; every later container restores your credential and skips onboarding. Only your credential is stored on the volume — skills, agents, settings, the status line, and each image's MCP servers stay baked into the image.
 
 ## Build
 
@@ -38,31 +40,31 @@ docker build --no-cache -t agentic_engineer_1 .
 Mount your local project folder into the container so your files live on your machine, not inside Docker:
 
 ```bash
-docker run -it --rm -p 8501:8501 -p 8502:8502 -v /path/to/your/workspace:/workspace agentic_engineer_1
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -p 8502:8502 -v /path/to/your/workspace:/workspace agentic_engineer_1
 ```
 
 Replace `/path/to/your/workspace` with the actual path on your machine. To use the current directory, you can use `./` (works on macOS, Linux, and modern Windows):
 
 ```bash
-docker run -it --rm -p 8501:8501 -p 8502:8502 -v ./:/workspace agentic_engineer_1
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -p 8502:8502 -v ./:/workspace agentic_engineer_1
 ```
 
 Or with `$PWD` on macOS/Linux:
 
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -v "$PWD":/workspace agentic_engineer_1
 ```
 
 On Windows (Command Prompt):
 
 ```cmd
-docker run -it --rm -p 8501:8501 -v "%cd%":/workspace agentic_engineer_1
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -v "%cd%":/workspace agentic_engineer_1
 ```
 
 On Windows (PowerShell):
 
 ```powershell
-docker run -it --rm -p 8501:8501 -v "${PWD}:/workspace" agentic_engineer_1
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -v "${PWD}:/workspace" agentic_engineer_1
 ```
 
 Files you create or edit inside `/workspace` in the container will be saved to your local folder and persist after the container exits.
@@ -70,7 +72,7 @@ Files you create or edit inside `/workspace` in the container will be saved to y
 ### Without a local workspace
 
 ```bash
-docker run -it --rm -p 8501:8501 agentic_engineer_1
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 agentic_engineer_1
 ```
 
 Note: any files created inside the container will be lost when it exits.
@@ -105,5 +107,5 @@ Images are built and published automatically by a GitHub Action whenever the mai
 Students can pull and run the published image directly without building it locally:
 
 ```bash
-docker run -it --rm -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
+docker run -it --rm -v claude-auth:/claude-auth -p 8501:8501 -v "$PWD":/workspace us-central1-docker.pkg.dev/hire-human/hire-human-ai/agentic_engineer_1:latest
 ```

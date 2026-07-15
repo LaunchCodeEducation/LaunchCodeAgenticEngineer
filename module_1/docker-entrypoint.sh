@@ -14,15 +14,6 @@ if [ -f "$AUTH_DIR/.credentials.json" ]; then
   echo '{ "hasCompletedOnboarding": true, "projects": { "/workspace": { "hasTrustDialogAccepted": true } } }' > /root/.claude.json
 fi
 
-# Register this image's MCP servers (merged into /root/.claude.json).
-claude mcp add slack \
-  node /usr/local/lib/node_modules/@modelcontextprotocol/server-slack/dist/index.js \
-  -e SLACK_BOT_TOKEN="$SLACK_BOT_TOKEN" \
-  -e SLACK_TEAM_ID="$SLACK_TEAM_ID"
-
-claude mcp add gmail \
-  node /usr/local/lib/node_modules/@gongrzhe/server-gmail-autoauth-mcp/build/index.js
-
 # Save the credential whenever it changes, so login survives any exit. Save
 # when the persisted copy is missing (first login) or older than the live one;
 # temp-file + chmod + atomic mv keeps the copy safe on the shared volume.
