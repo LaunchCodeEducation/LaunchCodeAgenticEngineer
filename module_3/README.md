@@ -48,7 +48,7 @@ docker run -it --rm \
   -p 8501:8501 -p 8502:8502 \
   -p 6274:6274 -p 3000:3000 \
   -p 8001:8001 -p 8002:8002 \
-  -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
+  -e OPENROUTER_API_KEY=$OPENROUTER_API_KEY \
   -e SLACK_BOT_TOKEN=$SLACK_BOT_TOKEN \
   -e SLACK_TEAM_ID=$SLACK_TEAM_ID \
   -v claude-auth:/claude-auth \
